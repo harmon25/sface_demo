@@ -22,14 +22,15 @@ The `assets/js/_hooks` directory is created and hooks copied over.
 Checkout branch where app is now nested in an umbrella, cleanup + compile
 
 ```sh
-rm -rf assets/
 
 git checkout as_umbrella
+# remove previously generated assets
+rm -rf assets/
 mix clean 
 mix compile 
 
 ls apps/sface_demo/assets/js/
-# nothing is here :(
+#  No _hooks are generated 
 ```
 
 
@@ -38,10 +39,11 @@ ls apps/sface_demo/assets/js/
 Checkout branch where app is now nested in an umbrella, cleanup + compile
 
 ```sh
-git checkout as_umbrella_older_elixir
-mix clean 
+git checkout umbrellla_older_elixir
+rm -rf _build/
+mix deps.clean --all
 mix compile 
 
 ls apps/sface_demo/assets/js/_hooks
-
+# it works!
 ```
