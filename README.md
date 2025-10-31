@@ -1,18 +1,46 @@
-# SfaceDemo
+# SfaceDemo Umbrella Mix Compile Issue
 
-To start your Phoenix server:
+Clone + compile the repo - not as an umbrella it works as expected: 
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+```sh
+git clone git@github.com:harmon25/sface_demo.git
+cd sface_demo/
+mix deps.get
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+mix compile
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+ls assets/js/_hooks
 
-## Learn more
+```
 
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
+The `assets/js/_hooks` directory is created and hooks copied over.
+
+
+## As Umbrella
+
+Checkout branch where app is now nested in an umbrella, cleanup + compile
+
+```sh
+rm -rf assets/
+
+git checkout as_umbrella
+mix clean 
+mix compile 
+
+ls apps/sface_demo/assets/js/
+# nothing is here :(
+```
+
+
+## As Umbrella On Earlier Elixir
+
+Checkout branch where app is now nested in an umbrella, cleanup + compile
+
+```sh
+git checkout as_umbrella_older_elixir
+mix clean 
+mix compile 
+
+ls apps/sface_demo/assets/js/
+
+```
