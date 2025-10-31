@@ -12,12 +12,13 @@ mix compile
 
 # listing this directory we have the co-located hooks
 ls assets/js/_hooks
-
 ```
 
 The `assets/js/_hooks` directory is created and hooks copied over.
 
-## As Umbrella
+So no as an umbrella app - this works as expected
+
+## As Umbrella on otp28 + elixir 1.19.1
 
 Checkout branch where app is now nested in an umbrella, cleanup + compile.
 This is what mis-behaves and I believe is an elixir/mix bug.
@@ -54,6 +55,7 @@ Checkout branch where app is now nested in an umbrella, but on elixir 1.18.x + o
 git checkout umbrellla_older_elixir
 rm -rf _build/
 mix deps.clean --all
+mix deps.get
 mix compile
 
 ls apps/sface_demo/assets/js/_hooks
